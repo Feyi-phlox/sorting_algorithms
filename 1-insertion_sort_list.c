@@ -15,31 +15,34 @@ void insertion_sort_list(listint_t **list)
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	current = (*list)->next;
+	current = *list;
 
 	while (current != NULL)
 	{
-		temp = current;
+		tmp = current;
 
-		while (temp->prev != NULL && temp->n < temp->prev->n)
+		while (tmp->prev != NULL && tmp->n < tmp->prev->n)
 		{
-			if (temp->next != NULL)
-				temp->next->prev = temp->prev;
+			/* Swap nodes */
+			if (tmp->next != NULL)
+				tmp->next->prev = tmp->prev;
 
-		temp->prev->next = temp->next;
-		temp->next = temp->prev;
-		temp->prev = temp->prev->prev;
+			tmp->prev->next = tmp->next;
+			tmp->next = tmp->prev;
+			tmp->prev = tmp->prev->prev;
 
-		if (temp->prev != NULL)
-			temp->prev->next = temp;
+			if (tmp->prev != NULL)
+				tmp->prev->next = tmp;
 
-		if (temp->next == NULL)
-			*list = temp;
+			if (tmp->next == NULL)
+				*list = tmp;
 
-		print_list(*list);
+			/* Print the list after swapping elements */
+			print_list(*list);
 
-		temp = temp->prev;
+			tmp = tmp->prev;
+		}
+
+		current = current->next;
 	}
-
-	current = current->next;
 }
