@@ -40,7 +40,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 		{
 			if (up < down)
 			{
-				swap_ints(array + down, array + up);
+				swap(array + down, array + up);
 				print_array(array, size);
 			}
 			up++;
@@ -49,7 +49,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 
 	if (array[up] > *driver)
 	{
-		swap_ints(array + up, driver);
+		swap(array + up, driver);
 		print_array(array, size);
 	}
 
@@ -67,13 +67,13 @@ int lomuto_partition(int *array, size_t size, int left, int right)
  */
 void lomuto_sort(int *array, size_t size, int left, int right)
 {
-	int belong;
+	int on;
 
 	if (right - left > 0)
 	{
-		belong = lomuto_partition(array, size, left, right);
-		lomuto_sort(array, size, left, belong - 1);
-		lomuto_sort(array, size, belong + 1, right);
+		on = lomuto_partition(array, size, left, right);
+		lomuto_sort(array, size, left, on - 1);
+		lomuto_sort(array, size, on + 1, right);
 	}
 }
 
