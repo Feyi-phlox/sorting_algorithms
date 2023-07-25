@@ -23,9 +23,9 @@ void insertion_sort_list(listint_t **list)
 		while (temp->prev != NULL && temp->n < temp->prev->n)
 		{
 			/* Swap nodes */
-			temp = current->prev;
-			current->prev = temp->prev;
-			temp->next = current->next;
+			temp = current->next;
+			current->next = temp->next;
+			temp->prev = current->prev;
 
 			if (current->next != NULL)
 				current->next->prev = temp;
