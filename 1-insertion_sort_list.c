@@ -19,11 +19,11 @@ void insertion_sort_list(listint_t **list)
 
 	while (current != NULL)
 	{
-		tmp = current;
 
 		while (tmp->prev != NULL && tmp->n < tmp->prev->n)
 		{
 			/* Swap nodes */
+
 			if (tmp->next != NULL)
 				tmp->next->prev = tmp->prev;
 
@@ -39,8 +39,6 @@ void insertion_sort_list(listint_t **list)
 
 			/* Print the list after swapping elements */
 			print_list(*list);
-
-			tmp = tmp->prev;
 		}
 
 		current = current->next;
