@@ -9,33 +9,32 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t wait;
+	size_t wt;
 	size_t i, j;
-	int temp;
+	int tp;
 
 	if (array == NULL || size < 2)
 		return;
 
-	wait = 1;
+	wt = 1;
 
 	/*Generate Knuth sequence with the first element greater than size*/
-	while (wait < size)
+	while (wt < size / 3)
 	{
-		wait = wait * 3 + 1;
+		wt = wt * 3 + 1;
 	}
-	wait = (wait - 1) / 3;
+	wt = (wt - 1) / 3;
 
-	while (wait > 0)
+	while (wt > 0)
 	{
-		for (i = wait; i < size; i++)
+		for (i = wt; i < size; i++)
 		{
-			temp = array[i];
-			j = i;
-			for (; j >= wait && array[j - wait] > temp; j -= wait)
+			tp = array[i];
+			for (j = i; j >= wt && array[j - wt] > tp; j -= wt)
 			{
-				array[j] = array[j - wait];
+				array[j] = array[j - wt];
 			}
-			array[j] = temp;
+			array[j] = tp;
 		}
 		/* Print the array after each time interval is decreased*/
 		print_array(array, size);
