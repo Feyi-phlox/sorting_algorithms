@@ -23,7 +23,7 @@ void shell_sort(int *array, size_t size)
 		wt = wt * 3 + 1;
 	}
 
-	for (; wt > 0; wt = (wt - 1) / 3;)
+	for (; wt > 0; wt = (wt - 1) / 3)
 	{
 		for (i = wt; i < size; i++)
 		{
