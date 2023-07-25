@@ -9,23 +9,21 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t wt;
+	size_t wt = 1;
 	size_t i, j;
 	int tp;
 
 	if (array == NULL || size < 2)
 		return;
 
-	wt = 1;
 
 	/*Generate Knuth sequence with the first element greater than size*/
 	while (wt < size / 3)
 	{
 		wt = wt * 3 + 1;
 	}
-	wt = (wt - 1) / 3;
 
-	while (wt > 0)
+	for (; wt > 0; wt = (wt - 1) / 3;)
 	{
 		for (i = wt; i < size; i++)
 		{
