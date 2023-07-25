@@ -20,22 +20,22 @@ void insertion_sort_list(listint_t **list)
 	while (current != NULL)
 	{
 
-		while (tmp->prev != NULL && tmp->n < tmp->prev->n)
+		while (temp->prev != NULL && temp->n < temp->prev->n)
 		{
 			/* Swap nodes */
 
-			if (tmp->next != NULL)
-				tmp->next->prev = tmp->prev;
+			if (temp->next != NULL)
+				temp->next->prev = temp->prev;
 
-			tmp->prev->next = tmp->next;
-			tmp->next = tmp->prev;
-			tmp->prev = tmp->prev->prev;
+			temp->prev->next = temp->next;
+			temp->next = temp->prev;
+			temp->prev = temp->prev->prev;
 
-			if (tmp->prev != NULL)
-				tmp->prev->next = tmp;
+			if (temp->prev != NULL)
+				temp->prev->next = temp;
 
-			if (tmp->next == NULL)
-				*list = tmp;
+			if (temp->next == NULL)
+				*list = temp;
 
 			/* Print the list after swapping elements */
 			print_list(*list);
